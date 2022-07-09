@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+A Simple one page news App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![](CodingTest.gif)
 
-## Available Scripts
+For this app, I used React, React Hooks, React Query and some other libraries.
+I used the free [News API](https://newsapi.org/) to get the news.
 
-In the project directory, you can run:
+Breakdown of the code:
+In Body.jsx (the main component):
+I set a default search term to "Bitcoin"
+I set a default page to 1
+The api allows for sortBy popularity, relevancy and publishedAt
+However, I observed popularity and relevancy are the same.
+I set a default sortBy to an empty string.
+Then I use the useQuery hook to get the news,
+passing in searchTerm and sortBy as the data name and the page as the query key.
+After data is fetched, I used the useEffect hook to handle the grouping by date and
+converting into an array.
+The groupData function returns an object
+The convertGroupData function then converts the array into an array of objects with the date and the news.
+Then the result of convertGroupData is stored in a group state
+In the jsx, I have the Search and Filter components as well as map out the items in the group state.
+To map out the group state, I first conditionally check if isLoading (a prop from React Query) is true.
+If isLoading is true, I render a loading spinner.
+If isLoading is false, I conditionally check for the error (a prop from React Query)
+If there is an error, I render an error message.
+Else, I render the news.
+I am mapping out the entire page fetched from the api.
+I also included a Prev and Next button to navigate through the pages.
+The Filter component is used to filter the news by the category.
+The Search component is used to search for news. The search term is stored in the state.
 
-### `yarn start`
+NB: I initially wanted to host the app on Netlify, but the News API Developer Plan is limited to development only.
+To test this work, kindly clone the repo and test locally.
+Below is a list of apiKeys you can use to test the app:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. 3775d0dcc02e420aae630ae761863436
+2. aef0fb1b65764bd0b638827a204fb60f
+3. d2c6d40321134c6e9093a72d0bf87631
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Also, the maximum number of news items that can be fetched per page is 100.
+This was why I included the Prev and Next buttons.

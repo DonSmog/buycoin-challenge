@@ -29,12 +29,14 @@ function Body() {
           queryKey[1] +
           "&sortBy=" +
           sortBy +
-          "&apiKey=" +
-          process.env.REACT_APP_API_KEY
+          "&apiKey=d2c6d40321134c6e9093a72d0bf87631"
       );
     },
     [searchTerm, sortBy]
   );
+
+  //3775d0dcc02e420aae630ae761863436
+  //aef0fb1b65764bd0b638827a204fb60f
 
   const { isLoading, data, isError } = useQuery(
     [searchTerm + sortBy, page],
