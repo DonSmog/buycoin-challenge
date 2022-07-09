@@ -6,12 +6,6 @@ function Filter({ setSortBy, group }) {
     <div className="filter">
       <button
         disabled={group.length === 0}
-        onClick={() => setSortBy("relevancy")}
-      >
-        Relevancy
-      </button>
-      <button
-        disabled={group.length === 0}
         onClick={() => setSortBy("popularity")}
       >
         Popularity
