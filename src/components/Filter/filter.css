@@ -1,0 +1,43 @@
+.filter {
+  display: flex;
+  gap: 1rem;
+}
+
+.filter button {
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  background: #007ee5;
+  color: black;
+  outline: none;
+  font-size: 1rem;
+  font-family: var(--font-family);
+  border: 0.1rem solid #007ee5;
+}
+
+.filter button:hover {
+  background: lightblue;
+  font-weight: 500;
+}
+
+.filter button:disabled {
+  background: grey;
+  border: 0.1rem solid grey;
+  cursor: not-allowed;
+}
+
+.filter button:disabled:hover {
+  font-weight: 400;
+}
+
+@media screen and (max-width: 430px) {
+  .filter button {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 321px) {
+  .filter button {
+    font-size: 0.6rem;
+  }
+}
