@@ -35,9 +35,6 @@ function Body() {
     [searchTerm, sortBy]
   );
 
-  //3775d0dcc02e420aae630ae761863436
-  //aef0fb1b65764bd0b638827a204fb60f
-
   const { isLoading, data, isError } = useQuery(
     [searchTerm + sortBy, page],
     getData,
