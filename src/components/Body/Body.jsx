@@ -61,16 +61,14 @@ function Body() {
         group[dateString] = group[dateString] ?? [];
         group[dateString].push(product);
         return group;
-      }, {});
+      }, []);
 
-      const convertGroupData = Object.entries(groupData).map(
-        ([date, articles]) => {
-          return {
-            title: date,
-            articles,
-          };
-        }
-      );
+      const convertGroupData = Object.keys(groupData).map((key) => {
+        return {
+          date: key,
+          articles: groupData[key],
+        };
+      });
       setGroup(convertGroupData);
     }
   }, [isLoading, data, searchTerm, setGroup, isError]);
@@ -97,12 +95,12 @@ function Body() {
                 <div className="body_content">
                   {group
                     .sort((a, b) => {
-                      return new Date(b.title) - new Date(a.title);
+                      return new Date(b.date) - new Date(a.date);
                     })
                     .map((group) => {
                       return (
                         <div className="body-section" key={uuid()}>
-                          <h2>{group.title}</h2>
+                          <h2>{group.date}</h2>
 
                           {group.articles.map((article) => {
                             const {
